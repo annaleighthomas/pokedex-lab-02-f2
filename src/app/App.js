@@ -4,7 +4,9 @@ import Header from './Header';
 import PokeList from '../pokemon/PokeList';
 import Footer from './Footer';
 import request from 'superagent';
+import PokeSearch from '../search/PokeSearch';
 import './App.css';
+
 
 const POKEDEX_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 
@@ -30,6 +32,8 @@ class App extends Component {
       <div className="App">
 
         <Header/>
+
+        <PokeSearch/>
 
         <main>
           <PokeList pokemon={pokemonData}/> 

@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <header className="Header">
 
-        <img className="logo" alt="Pokemon logo" src="../public/pokeball.png"/>
+        <img className="logo" alt="Pokemon logo" src="../pokeball.png"/>
 
         <h1>Pokemon</h1>
         
