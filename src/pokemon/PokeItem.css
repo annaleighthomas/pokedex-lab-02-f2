@@ -1,4 +1,4 @@
-.CreatureItem {
+.PokeItem {
   list-style: none;
   border: 1px solid black;
   padding: 10px;
@@ -9,18 +9,18 @@
   justify-items: center;
 }
 
-.CreatureItem h2 {
+.PokeItem h2 {
   margin: 0;
   font-size: 1rem;
 }
 
-.CreatureItem img {
+.PokeItem img {
   height: 100%;
   width: 100%;
   object-fit: contain;
 }
 
-.CreatureItem p {
+.PokeItem p {
   margin: 0;
   font-size: .9rem;
 }

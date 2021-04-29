@@ -5,13 +5,13 @@ class PokeItem extends Component {
 
   render() {
     
-    const pokemon = this.props.pokemon;
+    const pokemonObj = this.props.pokemon;
 
     return (
       <li className="PokeItem">
-        <h2>{pokemon.pokemon}</h2>
-        <img src={pokemon.url_image} alt={pokemon.pokemon}/>
-        <p>Height: {pokemon.height}</p>
+        <h2>{pokemonObj.pokemon}</h2>
+        <img src={pokemonObj.url_image} alt={pokemonObj.pokemon}/>
+        <p>Height: {pokemonObj.height}</p>
       </li>
     );
   }

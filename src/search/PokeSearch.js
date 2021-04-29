@@ -9,20 +9,20 @@ export default class PokeSearch extends Component {
     this.setState({ nameSearch: target.value });
   }
 
-  handleSortField = ({ target }) => {
-    this.setState({ sortField: target.value });
-  }
+  // handleSortField = ({ target }) => {
+  //   this.setState({ sortField: target.value });
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onSearch(this.state);
   }
 
-  componentDidUpdate(prevProp, prevState) {
-    if (prevState !== this.state) {
-      this.props.onSearch(this.state);
-    }
-  }
+  // componentDidUpdate(prevProp, prevState) {
+  //   if (prevState !== this.state) {
+  //     this.props.onSearch(this.state);
+  //   }
+  // }
 
   render() {
     const { nameSearch, sortField } = this.state;
@@ -36,7 +36,7 @@ export default class PokeSearch extends Component {
           value={nameSearch}
           onChange={this.handleNameFilter}
         />
-
+        {/* 
         <select
           name="sortField"
           value={sortField}
@@ -45,7 +45,7 @@ export default class PokeSearch extends Component {
 
           <option value="">sort...</option>
           <option value="">by name</option>
-        </select>
+        </select> */}
 
         <button>Search</button>
 

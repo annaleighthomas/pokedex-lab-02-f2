@@ -15,33 +15,40 @@ class App extends Component {
 
   state = { pokemonData: [] }
 
-  handleSearch = ({ nameSearch, sortField }) => {
-    const nameRegex = new RegExp(nameSearch, 'i');
+  handleSearch = async ({ nameSearch, sortField }) => {
+    // const nameRegex = new RegExp(nameSearch, 'i');
 
-    const searchData = this.state.pokemonData
+    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}`);
+    this.setState({ pokemonData: response.body.results });
+    // console.log(nameSearch);
+    // const searchData = this.state.pokemonData
 
-      .filter(pokemon => {
-        return pokemon.pokemon.match(nameRegex);
-      })
-      .sort((a, b) => {
-        if (a[sortField] < b[sortField]) return -1;
-        if (a[sortField] > b[sortField]) return 1;
-        return 0;
-      });
+    //   .filter(pokemon => {
+    //     return pokemon.pokemon.match(nameRegex);
+    //   })
+    //   .sort((a, b) => {
+    //     if (a[sortField] < b[sortField]) return -1;
+    //     if (a[sortField] > b[sortField]) return 1;
+    //     return 0;
+    //   });
 
-    this.setState({ pokemonData: searchData });
+    // this.setState({ pokemonData: searchData });
   }
 
   async componentDidMount() {
+    //this is where i called API 
     const response = await request.get(POKEDEX_API_URL);
     this.setState({ pokemonData: response.body.results });
-  
+    //this is where i set my state and named it 'pokemonData'
   }
 
   render() {
 
     const { pokemonData } = this.state;
+    // const pokemonData = this.state.pokemonData
 
+    // passing data to PokeList component through props 
+      // (listOfPokemon is the prop)
     return (
       <div className="App">
 
@@ -49,6 +56,7 @@ class App extends Component {
 
         <PokeSearch onSearch = {this.handleSearch} />
 
+        
         <main>
           <PokeList listOfPokemon={pokemonData}/> 
         </main>

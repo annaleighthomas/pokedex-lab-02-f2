@@ -1,15 +1,6 @@
-.Header {
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  grid-gap: 20px;
-  align-items: center;
-  padding: 20px;
-}
-
 .Header .logo {
-  width: 100%;
-}
-
-.Header h1 {
-  margin: 0x;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
 }

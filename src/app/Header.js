@@ -9,7 +9,6 @@ class Header extends Component {
 
         <img className="logo" alt="Pokemon logo" src="../pokeball.png"/>
 
-        <h1>Pokemon</h1>
         
       </header>
     );
