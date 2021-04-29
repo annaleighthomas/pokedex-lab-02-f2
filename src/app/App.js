@@ -15,16 +15,30 @@ class App extends Component {
 
   state = { pokemonData: [] }
 
+  handleSearch = ({ nameSearch, sortField }) => {
+    const nameRegex = new RegExp(nameSearch, 'i');
+
+    const searchData = this.state.pokemonData
+
+      .filter(pokemon => {
+        return pokemon.pokemon.match(nameRegex);
+      })
+      .sort((a, b) => {
+        if (a[sortField] < b[sortField]) return -1;
+        if (a[sortField] > b[sortField]) return 1;
+        return 0;
+      });
+
+    this.setState({ pokemonData: searchData });
+  }
+
   async componentDidMount() {
-    const response = await 
-    request.get(POKEDEX_API_URL);
+    const response = await request.get(POKEDEX_API_URL);
     this.setState({ pokemonData: response.body.results });
-    console.log(response.body.results);
+  
   }
 
   render() {
-
-    console.log(this.state);
 
     const { pokemonData } = this.state;
 
@@ -33,10 +47,10 @@ class App extends Component {
 
         <Header/>
 
-        <PokeSearch/>
+        <PokeSearch onSearch = {this.handleSearch} />
 
         <main>
-          <PokeList pokemon={pokemonData}/> 
+          <PokeList listOfPokemon={pokemonData}/> 
         </main>
 
         <Footer/>

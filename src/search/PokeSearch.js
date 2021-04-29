@@ -18,8 +18,13 @@ export default class PokeSearch extends Component {
     this.props.onSearch(this.state);
   }
 
-  render() {
+  componentDidUpdate(prevProp, prevState) {
+    if (prevState !== this.state) {
+      this.props.onSearch(this.state);
+    }
+  }
 
+  render() {
     const { nameSearch, sortField } = this.state;
 
     return (

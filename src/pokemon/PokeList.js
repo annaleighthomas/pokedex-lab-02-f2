@@ -5,7 +5,7 @@ import './PokeList.css';
 class PokeList extends Component {
 
   render() {
-    const pokemon = this.props.pokemon;
+    const pokemon = this.props.listOfPokemon;
 
     return (
       <ul className="PokeList">
