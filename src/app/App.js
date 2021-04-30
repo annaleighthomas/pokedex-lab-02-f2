@@ -15,7 +15,7 @@ class App extends Component {
 
   state = { pokemonData: [] }
 
-  handleSearch = async ({ nameSearch, sortField }) => {
+  handleSearch = async ({ nameSearch }) => {
     // const nameRegex = new RegExp(nameSearch, 'i');
 
     const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}`);
