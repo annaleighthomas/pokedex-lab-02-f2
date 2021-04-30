@@ -1,8 +1,5 @@
 .App {
   display: grid;
-}
-
-/* TODO: remove **/
-img {
-  margin: 50px auto;
+  background-color: rgb(172, 236, 167);
+  grid-template-rows: auto 1fr auto;
 }

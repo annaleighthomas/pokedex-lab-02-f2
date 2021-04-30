@@ -1,0 +1,6 @@
+.Header .logo {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
