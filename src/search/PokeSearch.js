@@ -3,7 +3,7 @@ import './PokeSearch.css';
 
 export default class PokeSearch extends Component {
   
-  state = { nameSearch: '', sortField: '' }
+  state = { nameSearch: '' }
 
   handleNameFilter = ({ target }) => {
     this.setState({ nameSearch: target.value });
@@ -25,7 +25,7 @@ export default class PokeSearch extends Component {
   // }
 
   render() {
-    const { nameSearch, sortField } = this.state;
+    const { nameSearch } = this.state;
 
     return (
       <form className="PokeSearch" onSubmit={this.handleSubmit}>
