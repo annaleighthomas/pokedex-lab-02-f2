@@ -15,25 +15,21 @@ class App extends Component {
 
   state = { pokemonData: [] }
 
-  handleSearch = async ({ nameSearch }) => {
-    // const nameRegex = new RegExp(nameSearch, 'i');
+  handleSearch = async ({ nameSearch, sortField }) => {
+    if (sortField === 'speedValue') {
+      const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}&sort=speed&direction=desc`);
+      this.setState({ pokemonData: response.body.results });
+    } 
+    else {
+      const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}`);
+      this.setState({ pokemonData: response.body.results });
+    }
+  } 
 
-    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}`);
-    this.setState({ pokemonData: response.body.results });
-    // console.log(nameSearch);
-    // const searchData = this.state.pokemonData
-
-    //   .filter(pokemon => {
-    //     return pokemon.pokemon.match(nameRegex);
-    //   })
-    //   .sort((a, b) => {
-    //     if (a[sortField] < b[sortField]) return -1;
-    //     if (a[sortField] > b[sortField]) return 1;
-    //     return 0;
-    //   });
-
-    // this.setState({ pokemonData: searchData });
-  }
+  // handleSort = async ({ sortField }) => {
+  //   const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=speed&direction=desc${sortField}`);
+  //   this.setState({ pokemonData: response.body.results });
+  // }
 
   async componentDidMount() {
     //this is where i called API 
@@ -54,7 +50,7 @@ class App extends Component {
 
         <Header/>
 
-        <PokeSearch onSearch = {this.handleSearch} />
+        <PokeSearch onSearch={this.handleSearch} />
 
         
         <main>
