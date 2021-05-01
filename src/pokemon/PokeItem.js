@@ -11,7 +11,7 @@ class PokeItem extends Component {
       <li className="PokeItem">
         <h2>{pokemonObj.pokemon}</h2>
         <img src={pokemonObj.url_image} alt={pokemonObj.pokemon}/>
-        <p>Height: {pokemonObj.height}</p>
+        <p>Speed: {pokemonObj.speed}</p>
       </li>
     );
   }

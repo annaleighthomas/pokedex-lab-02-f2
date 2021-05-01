@@ -3,15 +3,15 @@ import './PokeSearch.css';
 
 export default class PokeSearch extends Component {
   
-  state = { nameSearch: '' }
+  state = { nameSearch: '', sortField: '' }
 
   handleNameFilter = ({ target }) => {
     this.setState({ nameSearch: target.value });
   }
 
-  // handleSortField = ({ target }) => {
-  //   this.setState({ sortField: target.value });
-  // }
+  handleSortField = ({ target }) => {
+    this.setState({ sortField: target.value });
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export default class PokeSearch extends Component {
   // }
 
   render() {
-    const { nameSearch } = this.state;
+    const { nameSearch, sortField } = this.state;
 
     return (
       <form className="PokeSearch" onSubmit={this.handleSubmit}>
@@ -36,16 +36,15 @@ export default class PokeSearch extends Component {
           value={nameSearch}
           onChange={this.handleNameFilter}
         />
-        {/* 
+        
         <select
           name="sortField"
           value={sortField}
           onChange={this.handleSortField}
         >
-
-          <option value="">sort...</option>
-          <option value="">by name</option>
-        </select> */}
+          <option value=""></option>
+          <option value="speedValue">sort by speed</option>
+        </select>
 
         <button>Search</button>
 
