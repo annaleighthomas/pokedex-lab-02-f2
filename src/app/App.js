@@ -5,6 +5,7 @@ import PokeList from '../pokemon/PokeList';
 import Footer from './Footer';
 import request from 'superagent';
 import PokeSearch from '../search/PokeSearch';
+import Paging from '../search/Paging.js';
 import './App.css';
 
 
@@ -13,7 +14,7 @@ const POKEDEX_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 
 class App extends Component {
 
-  state = { pokemonData: [] }
+  state = { pokemonData: [], page: 1 }
 
   handleSearch = async ({ nameSearch, sortField }) => {
     if (sortField === 'speedValue') {
@@ -26,10 +27,11 @@ class App extends Component {
     }
   } 
 
-  // handleSort = async ({ sortField }) => {
-  //   const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=speed&direction=desc${sortField}`);
-  //   this.setState({ pokemonData: response.body.results });
-  // }
+  changePaging = async (page) => {
+    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?&page=${page}`);
+    this.setState({ pokemonData: response.body.results, page: page });
+  }
+
 
   async componentDidMount() {
     //this is where i called API 
@@ -40,7 +42,7 @@ class App extends Component {
 
   render() {
 
-    const { pokemonData } = this.state;
+    const { pokemonData, page } = this.state;
     // const pokemonData = this.state.pokemonData
 
     // passing data to PokeList component through props 
@@ -50,7 +52,9 @@ class App extends Component {
 
         <Header/>
 
-        <PokeSearch onSearch={this.handleSearch} />
+        <PokeSearch booger={this.handleSearch}/>
+
+        <Paging page={page} onNext={this.changePaging} onPrev={this.changePaging}/>
 
         
         <main>
