@@ -52,7 +52,7 @@ class App extends Component {
 
         <Header/>
 
-        <PokeSearch booger={this.handleSearch}/>
+        <PokeSearch onSubmit={this.handleSearch}/>
 
         <Paging page={page} onNext={this.changePaging} onPrev={this.changePaging}/>
 

@@ -15,7 +15,7 @@ export default class PokeSearch extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.booger(this.state);
+    this.props.onSubmit(this.state);
   }
 
   // componentDidUpdate(prevProp, prevState) {
