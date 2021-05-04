@@ -14,7 +14,7 @@ const POKEDEX_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 
 class App extends Component {
 
-  state = { pokemonData: [], page: 1 }
+  state = { pokemonData: [], page: 1, count: 1, perPage: 20 }
 
   handleSearch = async ({ nameSearch, sortField }) => {
     if (sortField === 'speedValue') {
@@ -36,13 +36,13 @@ class App extends Component {
   async componentDidMount() {
     //this is where i called API 
     const response = await request.get(POKEDEX_API_URL);
-    this.setState({ pokemonData: response.body.results });
+    this.setState({ pokemonData: response.body.results, count: response.body.count, perPage: response.body.perPage });
     //this is where i set my state and named it 'pokemonData'
   }
 
   render() {
 
-    const { pokemonData, page } = this.state;
+    const { pokemonData, page, count, perPage } = this.state;
     // const pokemonData = this.state.pokemonData
 
     // passing data to PokeList component through props 
@@ -54,7 +54,7 @@ class App extends Component {
 
         <PokeSearch onSubmit={this.handleSearch}/>
 
-        <Paging page={page} onNext={this.changePaging} onPrev={this.changePaging}/>
+        <Paging page={page} count={count} perPage={perPage} onNext={this.changePaging} onPrev={this.changePaging}/>
 
         
         <main>
