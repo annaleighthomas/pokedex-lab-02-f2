@@ -19,16 +19,16 @@ class App extends Component {
   handleSearch = async ({ nameSearch, sortField }) => {
     if (sortField === 'speedValue') {
       const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}&sort=speed&direction=desc`);
-      this.setState({ pokemonData: response.body.results });
+      this.setState({ pokemonData: response.body.results, page: 1 });
     } 
     else {
       const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}`);
-      this.setState({ pokemonData: response.body.results });
+      this.setState({ pokemonData: response.body.results, page: 1 });
     }
   } 
 
-  changePaging = async (page) => {
-    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?&page=${page}`);
+  changePaging = async (page, nameSearch) => {
+    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${nameSearch}&page=${page}`);
     this.setState({ pokemonData: response.body.results, page: page });
   }
 
